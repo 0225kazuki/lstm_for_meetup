@@ -1,0 +1,4 @@
+LibriSpeech
+
+!*.ipynb
+!/wav_samples
