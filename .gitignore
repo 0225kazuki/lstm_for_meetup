@@ -1,4 +1,5 @@
 LibriSpeech
 
+!lstm_soseki
 !*.ipynb
 !/wav_samples
