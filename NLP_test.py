@@ -9,7 +9,7 @@ import sklearn
 import numpy as np
 import pandas as pd
 import collections
-import sqlite3
+import sys
 from datetime import datetime
 
 def vec2word(word_vec):
@@ -75,6 +75,7 @@ def get_all_data(obj, os_type="mac", sentence_num=5000):
 
 
 if __name__ == "__main__":
+    os_type = sys.argv[1]
 
     whitelist = "\n「」。、あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゐゆゑよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゃゅょっゎ"
     whitelist = set(whitelist)
@@ -82,7 +83,7 @@ if __name__ == "__main__":
 
     obj = get_obj()
 
-    all_data = get_all_data(obj,os_type="mac")
+    all_data = get_all_data(obj,os_type=sys.argv[1])
 
     '''
     全単語の辞書とword2vec作成
