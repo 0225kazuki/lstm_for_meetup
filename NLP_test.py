@@ -115,7 +115,6 @@ if __name__ == "__main__":
                               hs=1,
                               negative=0)
 
-
     # sentenceごと，trigramのx_dataと次の単語のy_data生成
     x_data = []
     y_data = []
@@ -153,10 +152,7 @@ if __name__ == "__main__":
     print("x_train shape:",x_train.shape)
     print("Y_train shape:",Y_train.shape)
 
-
-
     # LSTM model
-
     print("Build LSTM model")
     from keras.models import Sequential
     from keras.layers import Dense, Activation
@@ -175,6 +171,11 @@ if __name__ == "__main__":
 
     print("Fitting")
     history = model.fit(x_train, Y_train, batch_size=1, epochs=1, shuffle=False)
+
+    import h5py
+    fin_time = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+    model.save(fin_time+".h5")
+    print('save model:',fin_time+".h5")
 
     # 学習の様子をプロット
     loss = history.history['loss']
@@ -203,6 +204,5 @@ if __name__ == "__main__":
     plt.xlabel('epoch')
     plt.ylabel('acc')
 
-    figtime = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
-    plt.savefig(figtime+".png")
-    print("save fig:",figtime+".png")
+    plt.savefig(fin_time+".png")
+    print("save fig:",fin_time+".png")
